@@ -7,6 +7,10 @@ import 'package:blackchinx/data/service/http_util.dart';
 import 'package:blackchinx/presentation/views/widgets/flutter_toast.dart';
 import 'package:blackchinx/presentation/views/widgets/loading_indicator.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:path/path.dart';
+
+import '../../app_launch.dart';
+import '../views/product/screens/product_overview_screen.dart';
 
 class AuthProvider with ChangeNotifier {
 
@@ -39,15 +43,17 @@ class AuthProvider with ChangeNotifier {
   }
 
 
-  Future<void> login(LoginRequestBody loginRequestBody) async {
+  Future<void> login(LoginRequestBody loginRequestBody, BuildContext context) async {
     showEaseLoadingIndicator();
     try {
       final response = await ApiService.login(loginRequestBody);
       if (response.statusCode == 200 || response.statusCode == 201) {
         authToken = AuthToken.fromJson(response.body);
+        getIt.registerSingleton<AuthToken>(authToken).accessToken;
         dismissLoadingIndicator();
-        isLoginSuccessful = true;
+        // isLoginSuccessful = true;
         notifyListeners();
+        Navigator.of(context).pushReplacementNamed(ProductsOverviewScreen.id);
       } else {
         showToast(message: "Unexpected server response. Please try again.");
       }

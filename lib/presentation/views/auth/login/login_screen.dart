@@ -44,7 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   topPadding: 12,
                   bottomPadding: 12),
               titleText(
-                "Log In now to access your\npersonalized health dashboard",
+                "Log In now to access diverse\nranges of product offerings",
                 fontSize: 16,
                 textAlign: TextAlign.center,
                 bottomPadding: 30,
@@ -64,8 +64,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 text: "Log in",
                 onPressed: () {
                   final loginReqBody = LoginRequestBody(email: 'Deerealboy@gmail.com', password: '1111');
-                  authProvider.login(loginReqBody);
-                  authProvider.isLoginSuccessful == true ? Navigator.of(context).pushReplacementNamed(ProductsOverviewScreen.id) : null;
+                  authProvider.login(loginReqBody, context);
                 },
                 topMargin: 30,
                 bottomMargin: 12,

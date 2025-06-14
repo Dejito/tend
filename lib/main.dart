@@ -1,3 +1,4 @@
+import 'package:blackchinx/app_launch.dart';
 import 'package:blackchinx/presentation/provider/auth_provider.dart';
 import 'package:blackchinx/presentation/provider/products_provider.dart';
 import 'package:blackchinx/presentation/views/auth/login/login_screen.dart';
@@ -10,6 +11,7 @@ import 'package:provider/provider.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 void main() {
+  AppLaunch().init();
   runApp(const MyApp());
 }
 

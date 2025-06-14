@@ -36,7 +36,6 @@ class HttpUtil {
 
     _dio.interceptors.add(InterceptorsWrapper(
       onRequest: (options, handler) async {
-
         final token = getIt<AuthToken>().accessToken;
         if (token != null && token.isNotEmpty) {
           options.headers['Authorization'] = 'Bearer $token';

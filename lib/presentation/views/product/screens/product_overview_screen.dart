@@ -9,7 +9,7 @@ import '../widget/app_drawer.dart';
 enum FilterOptions { favorites, all }
 
 class ProductsOverviewScreen extends StatefulWidget {
-  static const id = 'wo';
+  static const id = '/product-overview';
 
   const ProductsOverviewScreen({super.key});
 

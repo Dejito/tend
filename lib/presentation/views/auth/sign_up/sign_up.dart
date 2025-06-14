@@ -96,7 +96,7 @@ class _SignupState extends State<Signup> {
                       avatar: 'https://picsum.photos/800');
                   authProvider.createUser(createUserReqBody);
 
-                  !authProvider.isUserCreated ? Navigator.of(context).pushNamed(
+                  authProvider.isUserCreated ? Navigator.of(context).pushNamed(
                       LoginScreen.route) : null;
                   // context.push(AppRoutes.verifyEmail);
                 },
