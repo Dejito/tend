@@ -1,14 +1,14 @@
 import 'package:blackchinx/data/models/request/auth/create_user_req.dart';
-import 'package:blackchinx/presentation/views/login/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
-import '../../provider/auth_provider.dart';
-import '../auth_widgets.dart';
-import '../widgets/elevated_bottom_button.dart';
-import '../widgets/text_input.dart';
-import '../widgets/titleText.dart';
+import '../../../provider/auth_provider.dart';
+import '../../auth_widgets.dart';
+import '../../widgets/elevated_bottom_button.dart';
+import '../../widgets/text_input.dart';
+import '../../widgets/titleText.dart';
+import '../login/login_screen.dart';
 
 
 class Signup extends StatefulWidget {
