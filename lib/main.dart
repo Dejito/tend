@@ -3,6 +3,7 @@ import 'package:blackchinx/presentation/provider/auth_provider.dart';
 import 'package:blackchinx/presentation/provider/products_provider.dart';
 import 'package:blackchinx/presentation/views/auth/login/login_screen.dart';
 import 'package:blackchinx/presentation/views/auth/sign_up/sign_up.dart';
+import 'package:blackchinx/presentation/views/product/screens/product_detail_screen.dart';
 import 'package:blackchinx/presentation/views/product/screens/product_overview_screen.dart';
 import 'package:blackchinx/presentation/views/product/widget/product_item.dart';
 import 'package:flutter/material.dart';
@@ -45,7 +46,7 @@ class MyApp extends StatelessWidget {
             LoginScreen.route: (context) => const LoginScreen(),
             Signup.route: (context) => const Signup(),
             ProductsOverviewScreen.id: (context) => const ProductsOverviewScreen(),
-            // ProductDetailScreen.id: (context) => const ProductDetailScreen(),
+            ProductDetailScreen.id: (context) => const ProductDetailScreen(),
             // UserProductsScreen.id: (context) => const UserProductsScreen(),
             // EditProductScreen.id: (context) => const EditProductScreen(),
             // AuthScreen.id: (context) => const AuthScreen(),
