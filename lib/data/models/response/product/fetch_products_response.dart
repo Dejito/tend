@@ -8,8 +8,9 @@ class Product {
   final String description;
   final Category category;
   final List<String> images;
+  bool? isFavorite;
 
-  Product({
+  Product( {
     required this.id,
     required this.title,
     required this.slug,
@@ -17,6 +18,7 @@ class Product {
     required this.description,
     required this.category,
     required this.images,
+    this.isFavorite,
   });
 
   factory Product.fromJson(Map<String, dynamic> json) {

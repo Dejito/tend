@@ -65,6 +65,11 @@ class ProductsProvider with ChangeNotifier {
     }
   }
 
+  void setItemAsFavorite(int id) {
+   final prod = _productsList.firstWhere((prod) => prod.id == id);
+   prod.isFavorite = true;
+   notifyListeners();
+  }
 
   List<LocalProduct> get items {
     return [..._items];
@@ -78,108 +83,4 @@ class ProductsProvider with ChangeNotifier {
     return items.where((items) => items.isFavorite).toList();
   }
 
-  LocalProduct findById (String id){
-    return _items.firstWhere((prod) => prod.id == id);
-  }
-
-// Future<void> fetchAndSetProducts([bool filterBy = false]) async {
-//   final filterString = filterBy ? 'orderBy="creatorId"&equalTo="$userId"' : '';
-//   print(userId);
-//   var url = 'https://e-shop-432c0-default-rtdb.firebaseio.com/products.json?auth=$authToken&$filterString';
-//   try{
-//    final response = await http.get(Uri.parse(url));
-//    final products = json.decode(response.body)as Map<String, dynamic>;
-//    if (products.isEmpty){
-//      return;
-//    }
-//    url = 'https://e-shop-432c0-default-rtdb.firebaseio.com/userFavorites/$userId.json?auth=$authToken';
-//   final favoriteResponse = await http.get(Uri.parse(url));
-//     final favoriteData = json.decode(favoriteResponse.body);
-//    List<Product> loadedProducts = [];
-//     products.forEach((prodId, backendProd) {
-//       loadedProducts.add(Product(
-//           id: prodId,
-//           title: backendProd['title'],
-//           description: backendProd['description'],
-//           price: backendProd['price'] == String ? double.parse(backendProd['price']).toDouble() : backendProd['price'],
-//           imageUrl: backendProd['imageUrl'],
-//           // isFavorite: favoriteData != null ? false : favoriteData[prodId] ?? false,
-//       ));
-//     },
-//     );
-//    _items = loadedProducts;
-//    notifyListeners();
-//   }catch (e) {
-//     rethrow;
-//
-//   }
-// }
-
-// Future<void> addProduct(Product product) async {
-//   final url = 'https://e-shop-432c0-default-rtdb.firebaseio.com/products.json?auth=$authToken';
-//   try {
-//     final response = await http.post(Uri.parse(url), body: json.encode({
-//       'title': product.title,
-//       'description': product.description,
-//       'price': product.price,
-//       'imageUrl': product.imageUrl,
-//       'creatorId': userId
-//     })
-//     );
-//     if (response.body.isEmpty) {
-//       return;
-//     }
-//     final newProduct = Product(
-//       title: product.title,
-//       description: product.description,
-//       price: product.price,
-//       id: DateTime.now().toString(),
-//       imageUrl: product.imageUrl,
-//     );
-//     _items.add(newProduct);
-//     notifyListeners();
-//   } catch (e) {
-//     rethrow;
-//   }
-// }
-// Future<void> updateProduct (String id, Product newProduct) async{
-//   final url = 'https://e-shop-432c0-default-rtdb.firebaseio.com/products/$id.json?auth=$authToken';
-//   final prodIndex = _items.indexWhere((prod) => prod.id == id);
-//   try{
-//     if (prodIndex >= 0) {
-//
-//      await http.patch(Uri.parse(url),body:json.encode(
-//           {
-//             'title': newProduct.title,
-//             'description': newProduct.description,
-//             'price': newProduct.price,
-//             'imageUrl': newProduct.imageUrl
-//           })
-//       );
-//       _items[prodIndex] = newProduct;
-//       notifyListeners();
-//     } else {
-//     }
-//   } catch(e){
-//
-//     rethrow;
-//   }
-// }
-//
-// Future<void> deleteProduct(String id) async {
-//   final url = 'https://e-shop-432c0-default-rtdb.firebaseio.com/products/$id.json?auth=$authToken';
-//   final existingProductIndex = _items.indexWhere((prodId) => id == prodId.id);
-//   var existingProduct = _items[existingProductIndex];
-//   //remove albeit temporarily from local storage
-//   _items.removeWhere((prod) => prod.id == id);
-//     notifyListeners();
-//     final response = await http.delete(Uri.parse(url));
-//     if (response.statusCode >= 400) {
-//       _items.insert(existingProductIndex, existingProduct);
-//       notifyListeners();
-//       throw const HttpException('Unsuccessful request');
-//     }
-//     existingProduct.dispose();
-//
-// }
 }

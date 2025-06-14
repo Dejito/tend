@@ -10,7 +10,6 @@ class ProductDetailScreen extends StatelessWidget {
 
   static const id = 'products_details_screen';
 
-
   const ProductDetailScreen({super.key});
 
   @override
@@ -34,7 +33,6 @@ class ProductDetailScreen extends StatelessWidget {
           children: [
             // Product Image
             Container(
-              // margin: const EdgeInsets.all(16),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16),
                 boxShadow: const [
@@ -67,7 +65,6 @@ class ProductDetailScreen extends StatelessWidget {
                   giftVerificationItem(
                     key: 'Item:',
                     value: product.title,
-
                   ),
                   giftVerificationItem(
                     key: 'Amount',
@@ -84,72 +81,6 @@ class ProductDetailScreen extends StatelessWidget {
                 ],
               ),
             ),
-
-
-            // Product Info Card
-            // Container(
-            //   width: double.infinity,
-            //   margin: const EdgeInsets.symmetric(horizontal: 16),
-            //   padding: const EdgeInsets.all(20),
-            //   decoration: BoxDecoration(
-            //     color: Colors.white,
-            //     borderRadius: BorderRadius.circular(20),
-            //     boxShadow: [
-            //       BoxShadow(
-            //         color: Colors.black12,
-            //         blurRadius: 10,
-            //         offset: const Offset(0, 4),
-            //       )
-            //     ],
-            //   ),
-            //   child: Column(
-            //     crossAxisAlignment: CrossAxisAlignment.start,
-            //     children: [
-            //       // Title
-            //       Text(
-            //         product.title,
-            //         style: const TextStyle(
-            //           fontSize: 22,
-            //           fontWeight: FontWeight.bold,
-            //           color: Colors.black87,
-            //         ),
-            //       ),
-            //       const SizedBox(height: 12),
-            //
-            //       // Price
-            //       Text(
-            //         '\$${product.price}',
-            //         style: const TextStyle(
-            //           fontSize: 20,
-            //           fontWeight: FontWeight.w600,
-            //           color: Color(0xFF3E7D28), // greenish
-            //         ),
-            //       ),
-            //       const SizedBox(height: 20),
-            //
-            //       // Description Header
-            //       const Text(
-            //         'Description',
-            //         style: TextStyle(
-            //           fontSize: 16,
-            //           fontWeight: FontWeight.w600,
-            //           color: Colors.black87,
-            //         ),
-            //       ),
-            //       const SizedBox(height: 8),
-            //
-            //       // Description
-            //       Text(
-            //         product.description,
-            //         style: const TextStyle(
-            //           fontSize: 14,
-            //           height: 1.6,
-            //           color: Colors.black54,
-            //         ),
-            //       ),
-            //     ],
-            //   ),
-            // ),
 
             const SizedBox(height: 30),
           ],
