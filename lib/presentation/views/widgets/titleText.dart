@@ -25,7 +25,7 @@ Widget titleText(
       ),
     child: Text(
       text,
-      style: GoogleFonts.alegreyaSans(
+      style: GoogleFonts.roboto(
         fontSize: fontSize.sp,
         fontWeight: fontWeight,
         color: color,

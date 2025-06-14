@@ -18,60 +18,54 @@ class ProductsOverviewScreen extends StatefulWidget {
 }
 
 class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
-  @override
-  void initState() {
-    Future.delayed(const Duration(seconds: 1)).then((_) {
-      return Provider.of<AuthProvider>(context, listen: false)
-          .setLoginSuccessfulFlagToFalse();
-    });
-    super.initState();
-  }
+
 
   bool showFavs = false;
 
   @override
   Widget build(BuildContext context) {
-    print('calling prod overview method');
-    // Provider.of<Products>(context).fetchAndSetProducts();
     return Scaffold(
       drawer: const AppDrawer(),
       appBar: AppBar(
+        title: const Text('Push'),
         actions: [
           PopupMenuButton(
-              onSelected: (selectedValue) {
-                setState(() {
-                  if (selectedValue == FilterOptions.favorites) {
-                    showFavs = true;
-                  } else {
-                    showFavs = false;
-                  }
-                });
-              },
-              icon: const Icon(Icons.more_vert),
-              itemBuilder: (_) {
-                return const [
-                  PopupMenuItem(
-                    value: FilterOptions.favorites,
-                    child: Text('Only Favorites'),
-                  ),
-                  PopupMenuItem(
-                    value: FilterOptions.all,
-                    child: Text('All'),
-                  ),
-                ];
-              }),
+            onSelected: (selectedValue) {
+              setState(() {
+                showFavs = selectedValue == FilterOptions.favorites;
+              });
+            },
+            icon: const Icon(Icons.more_vert),
+            itemBuilder: (_) => const [
+              PopupMenuItem(
+                value: FilterOptions.favorites,
+                child: Text('Only Favorites'),
+              ),
+              PopupMenuItem(
+                value: FilterOptions.all,
+                child: Text('All'),
+              ),
+            ],
+          ),
         ],
-        title: const Text('Push'),
       ),
       body: FutureBuilder(
-          future: Provider.of<ProductsProvider>(context, listen: false)
-              .fetchProducts(),
-          builder: (context, snapshot) =>
-              snapshot.connectionState == ConnectionState.waiting
-                  ? const Center(
-                      child: CircularProgressIndicator(),
-                    )
-                  : ProductsGrid(isFav: showFavs)),
+        future: Provider.of<ProductsProvider>(context, listen: false).fetchProducts(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator());
+          } else {
+            return RefreshIndicator(
+              onRefresh: () async {
+                await Provider.of<ProductsProvider>(context, listen: false).fetchProducts();
+                setState(() {});
+              },
+              child: ProductsGrid(isFav: showFavs),
+            );
+          }
+        },
+      ),
     );
   }
+
 }
