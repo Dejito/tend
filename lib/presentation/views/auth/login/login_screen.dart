@@ -1,13 +1,16 @@
 import 'package:blackchinx/data/models/request/auth/login_reqbody.dart';
 import 'package:blackchinx/presentation/provider/auth_provider.dart';
-import 'package:blackchinx/presentation/views/sign_up/sign_up.dart';
+import 'package:blackchinx/presentation/views/product/screens/product_overview_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../auth_widgets.dart';
-import '../widgets/elevated_bottom_button.dart';
-import '../widgets/text_input.dart';
-import '../widgets/titleText.dart';
+import '../../auth_widgets.dart';
+import '../../widgets/elevated_bottom_button.dart';
+import '../../auth_widgets.dart';
+import '../sign_up/sign_up.dart';
+import '../../widgets/elevated_bottom_button.dart';
+import '../../widgets/text_input.dart';
+import '../../widgets/titleText.dart';
 
 
 class LoginScreen extends StatefulWidget {
@@ -41,7 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   topPadding: 12,
                   bottomPadding: 12),
               titleText(
-                "Log In now to access your\npersonalized health dashboard",
+                "Log In now to access diverse\nranges of product offerings",
                 fontSize: 16,
                 textAlign: TextAlign.center,
                 bottomPadding: 30,
@@ -61,7 +64,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 text: "Log in",
                 onPressed: () {
                   final loginReqBody = LoginRequestBody(email: 'Deerealboy@gmail.com', password: '1111');
-                  authProvider.login(loginReqBody);
+                  authProvider.login(loginReqBody, context);
                 },
                 topMargin: 30,
                 bottomMargin: 12,

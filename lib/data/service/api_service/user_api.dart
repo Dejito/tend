@@ -22,6 +22,11 @@ class ApiService {
     return response;
   }
 
+  static Future<Response> fetchProducts() async {
+    var response = await HttpUtil().get(AppUrl.fetchProduct);
+    return response;
+  }
+
 
 
 

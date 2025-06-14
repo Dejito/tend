@@ -1,6 +1,7 @@
 
 
 
+import 'package:blackchinx/data/models/response/auth/login_response.dart';
 import 'package:get_it/get_it.dart';
 
 // void setUpEndpointCalls() {
@@ -14,5 +15,5 @@ import 'package:get_it/get_it.dart';
 // }
 
 setupAuthToken(GetIt ioc) {
-  // ioc.registerSingleton<AuthToken>(AuthToken());
+  ioc.registerSingleton<AuthToken>(AuthToken());
 }

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../core/constants/app_colors.dart';
-import '../auth_widgets.dart';
-import '../widgets/elevated_bottom_button.dart';
-import '../widgets/text_input.dart';
-import '../widgets/titleText.dart';
+import '../../../../core/constants/app_colors.dart';
+import '../../auth_widgets.dart';
+import '../../widgets/elevated_bottom_button.dart';
+import '../../widgets/text_input.dart';
+import '../../widgets/titleText.dart';
 
 class ProfileSetup extends StatelessWidget {
 
