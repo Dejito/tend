@@ -56,14 +56,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 suffixIcon: const Icon(Icons.visibility_off_outlined),
               ),
 
-              // keepMeLoggedInForgotPassword(
-              //   value: isCheckedKeepLoggedIn,
-              //   onClickedChanged: (value) {
-              //     setState(() {
-              //       isCheckedKeepLoggedIn = value!;
-              //     });
-              //   },
-              // ),
+
               MedBottomButton(
                 text: "Log in",
                 onPressed: () {
