@@ -3,7 +3,7 @@
 
 import 'package:get_it/get_it.dart';
 
-void setUpEndpointCalls() {
+// void setUpEndpointCalls() {
 
   // getIt.registerSingleton<AuthCubit>(
   //   AuthCubit(
@@ -11,7 +11,7 @@ void setUpEndpointCalls() {
   //   ),
   // );
   //
-}
+// }
 
 setupAuthToken(GetIt ioc) {
   // ioc.registerSingleton<AuthToken>(AuthToken());

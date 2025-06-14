@@ -1,3 +1,4 @@
+import 'package:blackchinx/data/models/request/auth/login_reqbody.dart';
 import 'package:blackchinx/data/service/http_util.dart';
 import 'package:dio/dio.dart';
 
@@ -15,11 +16,11 @@ class ApiService {
   }
 
 
-  // static Future<Response> login(LoginRequestEntity loginRequestEntity) async {
-  //   var response = await HttpUtil().post(AppUrl.login,
-  //   data: loginRequestEntity.toJson());
-  //   return response;
-  // }
+  static Future<Response> login(LoginRequestBody loginRequestBody) async {
+    var response = await HttpUtil().post(AppUrl.login,
+    data: loginRequestBody.toJson());
+    return response;
+  }
 
 
 

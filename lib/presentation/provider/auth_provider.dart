@@ -15,7 +15,6 @@ class AuthProvider with ChangeNotifier {
 
 
   Future<void> createUser(CreateUserRequestBody createUserRequestBody) async {
-    // _showLoadingIndicator();
     showEaseLoadingIndicator();
     try {
       final response = await ApiService.createUser(createUserRequestBody);
@@ -23,16 +22,18 @@ class AuthProvider with ChangeNotifier {
         createUserResponse = CreateUserResponse.fromJson(response.body);
         dismissLoadingIndicator();
         isUserCreated = true;
+        showToast(message: "Congratulation!! \nUser created successfully!");
 
       } else {
         showToast(message: "Unexpected server response. Please try again.");
       }
     } catch (e) {
       handleError(error: e);
-      // hideLoadingIndicator();
       dismissLoadingIndicator();
     }
   }
+
+
 
 
   void _showLoadingIndicator() {

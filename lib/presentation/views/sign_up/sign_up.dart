@@ -23,6 +23,19 @@ class Signup extends StatefulWidget {
 class _SignupState extends State<Signup> {
   bool isCheckedKeepLoggedIn = false;
 
+  final TextEditingController _usernameController =
+  TextEditingController(text: '');
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _confirmPasswordController =
+  TextEditingController();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  bool _obscurePassword = true;
+  bool _showLoadingIndicator = false;
+  bool _isFormValid = false;
+
+
   @override
   Widget build(BuildContext context) {
     final authProvider = Provider.of<AuthProvider>(context);
@@ -36,25 +49,17 @@ class _SignupState extends State<Signup> {
             children: [
               logoImage(),
               titleText(
-                  "Sign up now to access your\n personalized health dashboard",
+                  "Sign up now to access unlimited products offering",
                   fontSize: 18,
                   textAlign: TextAlign.center,
                   bottomPadding: 34,
                   topPadding: 14),
               InputText(
-                hint: "First name",
-                bottomPadding: 0,
-              ),
-              InputText(
-                hint: "Last name",
+                hint: "Full name",
                 bottomPadding: 0,
               ),
               InputText(
                 hint: "Email",
-                bottomPadding: 0,
-              ),
-              InputText(
-                hint: "Phone",
                 bottomPadding: 0,
               ),
               InputText(
@@ -67,7 +72,7 @@ class _SignupState extends State<Signup> {
               ),
               InputText(
                 hint: "Confirm Password",
-                bottomPadding: 3,
+                bottomPadding: 16,
                 suffixIcon: const Icon(
                   Icons.visibility_off_outlined,
                   color: Colors.grey,
