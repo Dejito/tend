@@ -4,6 +4,7 @@ import 'package:blackchinx/presentation/views/sign_up/sign_up.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 void main() {
   runApp(const MyApp());
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
             useMaterial3: true,
           ),
           home: const LoginScreen(),
+          builder: EasyLoading.init(),
           routes: {
             // ProductsOverviewScreen.id: (context) => const ProductsOverviewScreen(),
             LoginScreen.route: (context) => const LoginScreen(),
