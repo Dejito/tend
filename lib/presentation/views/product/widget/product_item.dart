@@ -1,7 +1,9 @@
 import 'package:blackchinx/data/models/response/product/fetch_products_response.dart';
+import 'package:blackchinx/presentation/provider/products_provider.dart';
 import 'package:blackchinx/presentation/views/product/screens/product_detail_screen.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 
 class ProductItem extends StatelessWidget {
@@ -12,7 +14,7 @@ class ProductItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: (){
+      onTap: () {
         Navigator.of(context).pushNamed(ProductDetailScreen.id, arguments: product);
       },
       child: ClipRRect(
@@ -37,20 +39,34 @@ class ProductItem extends StatelessWidget {
                         const Icon(Icons.broken_image),
                       ),
                     ),
-                    Positioned(
-                      top: 6,
-                      right: 6,
-                      child: Container(
-                        decoration: const  BoxDecoration(
-                          color: Colors.black45,
-                          shape: BoxShape.circle,
-                        ),
-                        child: IconButton(
-                          icon: const Icon(Icons.favorite_border, size: 18),
-                          onPressed: () {},
-                          color: Colors.white,
-                        ),
-                      ),
+
+                    // Favorite Icon
+                    Consumer<ProductsProvider>(
+                      builder: (context, provider, _) {
+                        final updatedProduct = provider.findById(product.id);
+                        return Positioned(
+                          top: 6,
+                          right: 6,
+                          child: Container(
+                            decoration: const BoxDecoration(
+                              color: Colors.black26,
+                              shape: BoxShape.circle,
+                            ),
+                            child: IconButton(
+                              icon: Icon(
+                                Icons.favorite,
+                                size: 18,
+                                color: (updatedProduct.isFavorite ?? false)
+                                    ? Colors.red
+                                    : Colors.grey,
+                              ),
+                              onPressed: () {
+                                provider.setItemAsFavorite(updatedProduct.id);
+                              },
+                            ),
+                          ),
+                        );
+                      },
                     ),
                   ],
                 ),

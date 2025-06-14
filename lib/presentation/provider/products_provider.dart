@@ -8,7 +8,7 @@ import '../views/widgets/flutter_toast.dart';
 
 class ProductsProvider with ChangeNotifier {
 
-  List<Product> _productsList = [];
+  List<Product> _products = [];
 
   final List<LocalProduct> _items = [
     LocalProduct(
@@ -54,7 +54,7 @@ class ProductsProvider with ChangeNotifier {
     try {
       final response = await ApiService.fetchProducts();
       if (response.statusCode == 200 || response.statusCode == 201) {
-       _productsList = Product.fromJsonList(response.body);
+       _products = Product.fromJsonList(response.body);
        notifyListeners();
       } else {
         showToast(message: "Unexpected server response. Please try again.");
@@ -66,9 +66,18 @@ class ProductsProvider with ChangeNotifier {
   }
 
   void setItemAsFavorite(int id) {
-   final prod = _productsList.firstWhere((prod) => prod.id == id);
-   prod.isFavorite = true;
-   notifyListeners();
+   final prod = _products.firstWhere((prod) => prod.id == id);
+   if (prod.isFavorite == false) {
+     prod.isFavorite = true;
+     notifyListeners();
+   } else {
+     prod.isFavorite = false;
+     notifyListeners();
+   }
+  }
+
+  Product findById (int id){
+    return _products.firstWhere((prod) => prod.id == id);
   }
 
   List<LocalProduct> get items {
@@ -76,7 +85,7 @@ class ProductsProvider with ChangeNotifier {
   }
 
   List<Product> get productsList {
-    return [..._productsList];
+    return [..._products];
   }
 
   List<LocalProduct> get getFavorites {
