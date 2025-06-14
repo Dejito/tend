@@ -25,7 +25,7 @@ Widget titleText(
       ),
     child: Text(
       text,
-      style: GoogleFonts.roboto(
+      style: GoogleFonts.poppins(
         fontSize: fontSize.sp,
         fontWeight: fontWeight,
         color: color,
