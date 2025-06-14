@@ -1,13 +1,14 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 
-void showLoadingIndicator(){
+void showEaseLoadingIndicator(){
   EasyLoading.show(
       indicator: const CircularProgressIndicator(
         color: Colors.blueAccent,
       ),
       maskType: EasyLoadingMaskType.black,
-      dismissOnTap: true
+      dismissOnTap: false
   );
 }
 

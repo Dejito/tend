@@ -1,5 +1,7 @@
+import 'package:blackchinx/presentation/provider/auth_provider.dart';
 import 'package:blackchinx/presentation/views/sign_up/sign_up.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../auth_widgets.dart';
 import '../widgets/elevated_bottom_button.dart';
@@ -17,10 +19,12 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+
   bool isCheckedKeepLoggedIn = false;
 
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<AuthProvider>(context);
     return Scaffold(
       body: SafeArea(
         child: Padding(
