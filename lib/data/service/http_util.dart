@@ -10,6 +10,7 @@ import '../../core/constants/app_url.dart';
 import '../../core/constants/network_error_message.dart';
 import '../../presentation/provider/auth_provider.dart';
 import '../../presentation/views/widgets/flutter_toast.dart';
+import '../models/response/auth/login_response.dart';
 
 class HttpUtil {
   static final HttpUtil _instance = HttpUtil._internal();
@@ -35,12 +36,11 @@ class HttpUtil {
 
     _dio.interceptors.add(InterceptorsWrapper(
       onRequest: (options, handler) async {
-        // final authProvider = Provider.of<AuthProvider>(context);
 
-        // final token = getIt<AuthToken>().authToken;
-        // if (token != null && token.isNotEmpty) {
-        //   options.headers['Authorization'] = 'Bearer $token';
-        // }
+        final token = getIt<AuthToken>().accessToken;
+        if (token != null && token.isNotEmpty) {
+          options.headers['Authorization'] = 'Bearer $token';
+        }
         return handler.next(options);
       },
       onResponse: (response, handler) => handler.next(response),
