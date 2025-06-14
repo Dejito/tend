@@ -58,6 +58,10 @@ class AuthProvider with ChangeNotifier {
   }
 
 
+  void setLoginSuccessfulFlagToFalse() {
+    isLoginSuccessful = false;
+    notifyListeners();
+  }
 
 
   void _showLoadingIndicator() {

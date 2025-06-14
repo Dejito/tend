@@ -35,7 +35,7 @@ class HttpUtil {
 
     _dio.interceptors.add(InterceptorsWrapper(
       onRequest: (options, handler) async {
-        final authProvider = Provider.of<AuthProvider>(context);
+        // final authProvider = Provider.of<AuthProvider>(context);
 
         // final token = getIt<AuthToken>().authToken;
         // if (token != null && token.isNotEmpty) {

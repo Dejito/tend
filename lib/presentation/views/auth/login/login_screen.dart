@@ -1,5 +1,6 @@
 import 'package:blackchinx/data/models/request/auth/login_reqbody.dart';
 import 'package:blackchinx/presentation/provider/auth_provider.dart';
+import 'package:blackchinx/presentation/views/product/screens/product_overview_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -64,6 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 onPressed: () {
                   final loginReqBody = LoginRequestBody(email: 'Deerealboy@gmail.com', password: '1111');
                   authProvider.login(loginReqBody);
+                  authProvider.isLoginSuccessful == true ? Navigator.of(context).pushReplacementNamed(ProductsOverviewScreen.id) : null;
                 },
                 topMargin: 30,
                 bottomMargin: 12,
