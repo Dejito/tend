@@ -27,7 +27,6 @@ class ProductItem extends StatelessWidget {
                   icon: const Icon(Icons.favorite,),
                   onPressed: (){
                     //   print('favorited');
-                    // prod.toggleFavorite(auth.token!, auth.userId);
                   },
                   color: Colors.red
 
