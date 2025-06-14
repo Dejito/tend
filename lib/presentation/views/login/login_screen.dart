@@ -1,3 +1,4 @@
+import 'package:blackchinx/data/models/request/auth/login_reqbody.dart';
 import 'package:blackchinx/presentation/provider/auth_provider.dart';
 import 'package:blackchinx/presentation/views/sign_up/sign_up.dart';
 import 'package:flutter/material.dart';
@@ -46,7 +47,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 bottomPadding: 30,
               ),
               InputText(
-                hint: "Phone number",
+                hint: "Email",
                 bottomPadding: 0,
               ),
               InputText(
@@ -54,18 +55,20 @@ class _LoginScreenState extends State<LoginScreen> {
                 bottomPadding: 16,
                 suffixIcon: const Icon(Icons.visibility_off_outlined),
               ),
-              keepMeLoggedInForgotPassword(
-                value: isCheckedKeepLoggedIn,
-                onClickedChanged: (value) {
-                  setState(() {
-                    isCheckedKeepLoggedIn = value!;
-                  });
-                },
-              ),
+
+              // keepMeLoggedInForgotPassword(
+              //   value: isCheckedKeepLoggedIn,
+              //   onClickedChanged: (value) {
+              //     setState(() {
+              //       isCheckedKeepLoggedIn = value!;
+              //     });
+              //   },
+              // ),
               MedBottomButton(
                 text: "Log in",
                 onPressed: () {
-                  // context.go(AppRoutes.appPage);
+                  final loginReqBody = LoginRequestBody(email: 'Deerealboy@gmail.com', password: '1111');
+                  authProvider.login(loginReqBody);
                 },
                 topMargin: 30,
                 bottomMargin: 12,

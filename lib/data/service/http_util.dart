@@ -1,11 +1,14 @@
 import 'dart:async';
 
 import 'package:dio/dio.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
+import 'package:provider/provider.dart';
 
 import '../../app_launch.dart';
 import '../../core/constants/app_url.dart';
 import '../../core/constants/network_error_message.dart';
+import '../../presentation/provider/auth_provider.dart';
 import '../../presentation/views/widgets/flutter_toast.dart';
 
 class HttpUtil {
@@ -13,6 +16,8 @@ class HttpUtil {
   factory HttpUtil() => _instance;
 
   late final Dio _dio;
+
+  late BuildContext context;
 
   HttpUtil._internal() {
     _dio = Dio(BaseOptions(
@@ -30,6 +35,8 @@ class HttpUtil {
 
     _dio.interceptors.add(InterceptorsWrapper(
       onRequest: (options, handler) async {
+        final authProvider = Provider.of<AuthProvider>(context);
+
         // final token = getIt<AuthToken>().authToken;
         // if (token != null && token.isNotEmpty) {
         //   options.headers['Authorization'] = 'Bearer $token';
@@ -170,7 +177,7 @@ void handleError({required dynamic error}) {
   String errorMessage;
 
   if (error is DioException) {
-    final serverError = error.response?.data["error"];
+    final serverError = error.response?.data["message"];
     errorMessage = (serverError != null && serverError.toString().isNotEmpty)
         ? serverError.toString()
         : "Network error. Please try again";
