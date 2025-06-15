@@ -47,7 +47,7 @@ class _ProfilePageState extends State<ProfilePage> {
     _emailController.text = authProvider.user.email ?? "";
     return Scaffold(
       appBar: AppBar(
-        title: titleText("Profile"),
+        title: const Text("Profile"),
       ),
       body: Container(
         padding: EdgeInsets.all(16.w),
@@ -70,7 +70,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 hint: "e.g. Bogunride22@gmail.com",
                 bottomPadding: 0,
               ),
-              const Divider(height: 50,),
+              const Divider(height: 50,color: Colors.transparent,),
               MedBottomButton(
                 text: "Edit Profile",
                 onPressed: () {
@@ -80,14 +80,15 @@ class _ProfilePageState extends State<ProfilePage> {
                   // context.go(AppRoutes.login);
                 },
               ),
+              const Divider(height: 80,color: Colors.transparent,),
               if(deviceInfo != null)
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Device Name: ${deviceInfo!['name']}"),
-                    Text("Model: ${deviceInfo!['model']}"),
-                    Text("System: ${deviceInfo!['systemName']}"),
-                    Text("Version: ${deviceInfo!['systemVersion']}"),
+                    titleText("Device Name: ${deviceInfo!['name']}"),
+                    titleText("Model: ${deviceInfo!['model']}"),
+                    titleText("System: ${deviceInfo!['systemName']}"),
+                    titleText("Version: ${deviceInfo!['systemVersion']}"),
                   ],
                 ),
             ],

@@ -1,3 +1,4 @@
+import 'package:blackchinx/presentation/views/widgets/flutter_toast.dart';
 import 'package:blackchinx/presentation/views/widgets/titleText.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/gestures.dart';
@@ -147,13 +148,18 @@ Widget profileAvatar(String imageUrl) {
           Positioned(
             bottom: 0,
             right: 0,
-            child: Container(
-              decoration: AppDecorationStyle.boxDecoration,
-              padding: const EdgeInsets.all(6),
-              child: Icon(
-                Icons.camera_alt,
-                size: 15.w,
-                color: Colors.grey[800],
+            child: InkWell(
+              onTap: (){
+                showToast(message: "Backend provider doesn't have such feature");
+              },
+              child: Container(
+                decoration: AppDecorationStyle.boxDecoration,
+                padding: const EdgeInsets.all(6),
+                child: Icon(
+                  Icons.camera_alt,
+                  size: 15.w,
+                  color: Colors.grey[800],
+                ),
               ),
             ),
           ),
