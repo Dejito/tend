@@ -10,6 +10,10 @@ Xcode (for iOS builds)
 Android Studio (for Android builds)
 CocoaPods (for iOS dependency management)
 
+clone project locally
+use 'main' branch
+run on iOS or Android platorm
+
 
 # Features
 Authentication
