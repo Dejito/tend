@@ -36,7 +36,7 @@ Widget giftVerificationItem(
           child: titleText(
             value,
             fontWeight: FontWeight.w500,
-            fontSize: 14,
+            fontSize: 12,
             textAlign: TextAlign.right,
             overflow: TextOverflow.visible,
             maxLines: null,
