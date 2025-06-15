@@ -16,10 +16,4 @@ class AuthToken {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'access_token': accessToken,
-      'refresh_token': refreshToken,
-    };
-  }
 }

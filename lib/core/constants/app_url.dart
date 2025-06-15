@@ -8,5 +8,4 @@ class AppUrl {
   static const updateUser = 'users/1';
   static const getUser = 'auth/profile';
 
-
 }
