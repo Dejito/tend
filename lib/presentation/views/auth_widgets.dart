@@ -43,7 +43,7 @@ Widget newHereButton(Function() onClickedSignup) {
 
 Widget alreadyHaveAnAccountButton(Function() onClickedSignup) {
   return Container(
-    margin: EdgeInsets.only(top: 12.h),
+    margin: EdgeInsets.only(top: 24.h),
     decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -52,7 +52,7 @@ Widget alreadyHaveAnAccountButton(Function() onClickedSignup) {
       children: [
         titleText(
           "Already have an account? ",
-          fontSize: 14,
+          fontSize: 12,
           textAlign: TextAlign.start,
           fontWeight: FontWeight.w300,
         ),
@@ -60,7 +60,7 @@ Widget alreadyHaveAnAccountButton(Function() onClickedSignup) {
           onTap: onClickedSignup,
           child: titleText(
             "Sign In",
-            // fontSize: 10,
+            fontSize: 12,
             textAlign: TextAlign.start,
             fontWeight: FontWeight.bold,
           ),

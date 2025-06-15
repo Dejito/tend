@@ -21,19 +21,29 @@ class Signup extends StatefulWidget {
 }
 
 class _SignupState extends State<Signup> {
+
+
   bool isCheckedKeepLoggedIn = false;
 
-  final TextEditingController _usernameController =
+  final TextEditingController _nameController =
   TextEditingController(text: '');
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _confirmPasswordController =
-  TextEditingController();
+  // final TextEditingController _confirmPasswordController =
+  // TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   bool _obscurePassword = true;
-  bool _showLoadingIndicator = false;
-  bool _isFormValid = false;
+
+
+  @override
+  void dispose() {
+    _passwordController.dispose();
+    _emailController.dispose();
+    _nameController.dispose();
+    // _confirmPasswordController.dispose();
+    super.dispose();
+  }
 
 
   @override
@@ -50,34 +60,38 @@ class _SignupState extends State<Signup> {
               logoImage(),
               titleText(
                   "Sign up now to access unlimited products offering",
-                  fontSize: 18,
+                  fontSize: 14,
                   textAlign: TextAlign.center,
                   bottomPadding: 34,
                   topPadding: 14),
               InputText(
-                hint: "Full name",
+                controller: _nameController,
+                hint: "Name",
                 bottomPadding: 0,
               ),
               InputText(
+                controller: _emailController,
                 hint: "Email",
                 bottomPadding: 0,
               ),
               InputText(
-                hint: "Set Password",
-                bottomPadding: 0,
-                suffixIcon: const Icon(
-                  Icons.visibility_off_outlined,
-                  color: Colors.grey,
-                ),
+                controller: _passwordController,
+                  obscureText: _obscurePassword,
+                  hint: "Set Password",
+                bottomPadding: 20,
+                  suffixIcon: IconButton(
+                    onPressed: () {
+                      setState(() {
+                        _obscurePassword = !_obscurePassword;
+                      });
+                    },
+                    icon: const Icon(
+                      Icons.visibility_off_outlined,
+                      color: Colors.grey,
+                    ),
+                  )
               ),
-              InputText(
-                hint: "Confirm Password",
-                bottomPadding: 16,
-                suffixIcon: const Icon(
-                  Icons.visibility_off_outlined,
-                  color: Colors.grey,
-                ),
-              ),
+
               termsAndConditionsText(
                 value: isCheckedKeepLoggedIn,
                 onClickedChanged: (value) {
@@ -90,16 +104,12 @@ class _SignupState extends State<Signup> {
                 text: "Sign up",
                 onPressed: () {
                   final createUserReqBody = CreateUserRequestBody(
-                      name: 'Oladeji Muhammed',
-                      email: 'Deerealboy@gmail.com',
-                      password: '1111',
+                      name: _nameController.text,
+                      email: _emailController.text,
+                      password: _passwordController.text,
                       avatar: 'https://picsum.photos/800'
                   );
                   authProvider.createUser(createUserReqBody, context);
-
-                  // authProvider.isUserCreated ? Navigator.of(context).pushNamed(
-                  //     LoginScreen.route) : null;
-                  // context.push(AppRoutes.verifyEmail);
                 },
                 topMargin: 20,
               ),

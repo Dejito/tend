@@ -19,6 +19,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+
   @override
   void dispose() {
     _passwordController.dispose();
@@ -30,7 +31,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
   final TextEditingController _emailController = TextEditingController();
 
-  // bool isCheckedKeepLoggedIn = false;
   bool _obscurePassword = true;
 
 
