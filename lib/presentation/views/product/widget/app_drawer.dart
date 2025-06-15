@@ -19,14 +19,14 @@ class AppDrawer extends StatelessWidget {
             leading: const Icon(Icons.shop),
             title: const Text('Shop'),
             onTap: (){
-              Navigator.of(context).pushReplacementNamed(ProductsOverviewScreen.id);
+              Navigator.of(context).pushNamed(ProductsOverviewScreen.id);
             },
           ),
           ListTile(
             leading: const Icon(Icons.person),
             title: const Text('Profile'),
             onTap: (){
-              Navigator.of(context).pushReplacementNamed(ProfilePage.route);
+              Navigator.of(context).pushNamed(ProfilePage.route);
             },
           )
         ],
