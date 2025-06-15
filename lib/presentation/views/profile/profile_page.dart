@@ -13,7 +13,7 @@ import '../widgets/text_input.dart';
 class ProfilePage extends StatefulWidget {
   static const route = '/profile-page';
 
-  ProfilePage({super.key});
+  const ProfilePage({super.key});
 
   @override
   State<ProfilePage> createState() => _ProfilePageState();
@@ -27,6 +27,13 @@ class _ProfilePageState extends State<ProfilePage> {
     loadDeviceInfo();
     super.initState();
   }
+  @override
+  void dispose(){
+    _nameController.dispose();
+    _emailController.dispose();
+    super.dispose();
+  }
+
   Future<void> loadDeviceInfo() async {
     final info = await DeviceInfoService.getDeviceInfo();
     setState(() {
@@ -43,8 +50,8 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     final authProvider = Provider.of<AuthProvider>(context, listen: false);
-    _nameController.text = authProvider.user.name ?? "";
-    _emailController.text = authProvider.user.email ?? "";
+    _nameController.text = authProvider.user.name;
+    _emailController.text = authProvider.user.email;
     return Scaffold(
       appBar: AppBar(
         title: const Text("Profile"),
