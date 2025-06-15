@@ -6,6 +6,7 @@ import 'package:blackchinx/data/models/response/auth/get_user_response.dart';
 import 'package:blackchinx/data/models/response/auth/login_response.dart';
 import 'package:blackchinx/data/service/api_service/user_api.dart';
 import 'package:blackchinx/data/service/http_util.dart';
+import 'package:blackchinx/presentation/views/auth/login/login_screen.dart';
 import 'package:blackchinx/presentation/views/widgets/flutter_toast.dart';
 import 'package:blackchinx/presentation/views/widgets/loading_indicator.dart';
 import 'package:flutter/cupertino.dart';
@@ -24,7 +25,7 @@ class AuthProvider with ChangeNotifier {
   late final AuthToken authToken;
 
 
-  Future<void> createUser(CreateUserRequestBody createUserRequestBody) async {
+  Future<void> createUser(CreateUserRequestBody createUserRequestBody, BuildContext ctx) async {
     showEaseLoadingIndicator();
     try {
       final response = await ApiService.createUser(createUserRequestBody);
@@ -33,6 +34,9 @@ class AuthProvider with ChangeNotifier {
         dismissLoadingIndicator();
         // isUserCreated = true;
         showToast(message: "Congratulation!! \nUser created successfully!");
+        if (ctx.mounted) {
+          Navigator.of(ctx).pushReplacementNamed(LoginScreen.route);
+        }
         notifyListeners();
       } else {
         showToast(message: "Unexpected server response. Please try again.");

@@ -93,8 +93,9 @@ class _SignupState extends State<Signup> {
                       name: 'Oladeji Muhammed',
                       email: 'Deerealboy@gmail.com',
                       password: '1111',
-                      avatar: 'https://picsum.photos/800');
-                  authProvider.createUser(createUserReqBody);
+                      avatar: 'https://picsum.photos/800'
+                  );
+                  authProvider.createUser(createUserReqBody, context);
 
                   // authProvider.isUserCreated ? Navigator.of(context).pushNamed(
                   //     LoginScreen.route) : null;

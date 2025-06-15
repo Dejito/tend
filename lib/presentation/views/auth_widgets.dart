@@ -1,4 +1,5 @@
 import 'package:blackchinx/presentation/views/widgets/titleText.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -117,7 +118,7 @@ Widget termsAndConditionsText({
 
 
 
-Widget profileAvatar() {
+Widget profileAvatar(String imageUrl) {
   return Container(
     margin: EdgeInsets.symmetric(vertical: 16.h),
     child: Center(
@@ -126,10 +127,22 @@ Widget profileAvatar() {
         children: [
           // Circular profile image
           CircleAvatar(
-            radius: 40.w,
+            radius: 60.w,
             backgroundColor: Colors.white,
-            backgroundImage: const AssetImage(AppImages.brandLogo),
+            child: ClipOval(
+              child: CachedNetworkImage(
+                imageUrl: imageUrl,
+                fit: BoxFit.cover,
+                width: double.infinity,
+                height: double.infinity,
+                placeholder: (context, url) =>
+                const Center(child: CircularProgressIndicator()),
+                errorWidget: (context, url, error) =>
+                const Icon(Icons.broken_image),
+              ),
+            ),
           ),
+
           // Camera icon overlay
           Positioned(
             bottom: 0,

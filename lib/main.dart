@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget {
             ProductsOverviewScreen.id: (context) => const ProductsOverviewScreen(),
             ProductDetailScreen.id: (context) => const ProductDetailScreen(),
             ProfilePage.route: (context) => ProfilePage(),
-            EditProfilePage.route: (context) => EditProfilePage(),
+            // EditProfilePage.route: (context) => EditProfilePage(),
 
             // UserProductsScreen.id: (context) => const UserProductsScreen(),
             // EditProductScreen.id: (context) => const EditProductScreen(),

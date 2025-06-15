@@ -15,7 +15,6 @@ class ProfilePage extends StatelessWidget {
 
   final TextEditingController _nameController = TextEditingController(text: '');
   final TextEditingController _emailController = TextEditingController(text: '');
-  final TextEditingController _phoneController = TextEditingController(text: '');
 
 
   @override
@@ -31,7 +30,7 @@ class ProfilePage extends StatelessWidget {
         padding: EdgeInsets.all(16.w),
         child: Column(
           children: [
-            profileAvatar(),
+            profileAvatar(authProvider.user.avatar),
             InputText(
               title: "Name",
               hint: 'e.g. Blessing',
