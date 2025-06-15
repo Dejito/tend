@@ -1,3 +1,4 @@
+import 'package:blackchinx/data/models/request/auth/update_user_req_body.dart';
 import 'package:blackchinx/presentation/views/widgets/titleText.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -14,8 +15,8 @@ class ProfilePage extends StatelessWidget {
   ProfilePage({super.key});
 
   final TextEditingController _nameController = TextEditingController(text: '');
-  final TextEditingController _emailController = TextEditingController(text: '');
-
+  final TextEditingController _emailController =
+      TextEditingController(text: '');
 
   @override
   Widget build(BuildContext context) {
@@ -28,29 +29,37 @@ class ProfilePage extends StatelessWidget {
       ),
       body: Container(
         padding: EdgeInsets.all(16.w),
-        child: Column(
-          children: [
-            profileAvatar(authProvider.user.avatar),
-            InputText(
-              title: "Name",
-              hint: 'e.g. Blessing',
-              controller: _nameController,
-              bottomPadding: 30,
-            ),
-            InputText(
-              controller: _emailController,
-              title: "Email",
-              hint: "e.g. Bogunride22@gmail.com",
-              bottomPadding: 0,
-            ),
-            const Spacer(),
-            MedBottomButton(
-              text: "Edit Profile",
-              onPressed: () {
-                // context.go(AppRoutes.login);
-              },
-            ),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              profileAvatar(authProvider.user.avatar),
+              const SizedBox(
+                height: 30,
+              ),
+              InputText(
+                title: "Name",
+                hint: 'e.g. Blessing',
+                controller: _nameController,
+                bottomPadding: 30,
+              ),
+              InputText(
+                controller: _emailController,
+                title: "Email",
+                hint: "e.g. Bogunride22@gmail.com",
+                bottomPadding: 0,
+              ),
+              const Divider(height: 50,),
+              MedBottomButton(
+                text: "Edit Profile",
+                onPressed: () {
+                  final updateUserRequestBody = UpdateUserRequestBody(
+                      email: _emailController.text, name: _nameController.text);
+                  authProvider.updateUser(updateUserRequestBody, context);
+                  // context.go(AppRoutes.login);
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );

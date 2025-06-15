@@ -12,7 +12,6 @@ import '../../widgets/elevated_bottom_button.dart';
 import '../../widgets/text_input.dart';
 import '../../widgets/titleText.dart';
 
-
 class LoginScreen extends StatefulWidget {
   static const route = '/login';
 
@@ -23,7 +22,6 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-
   bool isCheckedKeepLoggedIn = false;
 
   @override
@@ -38,7 +36,9 @@ class _LoginScreenState extends State<LoginScreen> {
               // crossAxisAlignment: CrossAxisAlignment.center,
               // mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const SizedBox(height: 20,),
+                const SizedBox(
+                  height: 40,
+                ),
                 logoImage(),
                 titleText("Log In",
                     fontSize: 22,
@@ -60,12 +60,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   bottomPadding: 16,
                   suffixIcon: const Icon(Icons.visibility_off_outlined),
                 ),
-            
-            
                 MedBottomButton(
                   text: "Log in",
                   onPressed: () {
-                    final loginReqBody = LoginRequestBody(email: 'Deerealboy@gmail.com', password: '1111');
+                    final loginReqBody = LoginRequestBody(
+                        email: 'Deerealboy@gmail.com', password: '1111');
                     authProvider.login(loginReqBody, context);
                   },
                   topMargin: 30,

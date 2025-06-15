@@ -127,7 +127,7 @@ Widget profileAvatar(String imageUrl) {
         children: [
           // Circular profile image
           CircleAvatar(
-            radius: 60.w,
+            radius: 80.w,
             backgroundColor: Colors.white,
             child: ClipOval(
               child: CachedNetworkImage(
