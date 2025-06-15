@@ -80,7 +80,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         color: Colors.grey,
                       ),
                     )                ),
-                MedBottomButton(
+                TezdaElevatedButton(
                   text: "Log in",
                   onPressed: () {
                     final loginReqBody = LoginRequestBody(

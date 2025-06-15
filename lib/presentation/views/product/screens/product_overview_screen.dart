@@ -18,7 +18,7 @@ class ProductsOverviewScreen extends StatefulWidget {
 
 class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
 
-
+  /// this screen is the homepage after user logs in, also the product listing screen
   @override
   Widget build(BuildContext context) {
     return Scaffold(

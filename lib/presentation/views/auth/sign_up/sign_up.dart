@@ -100,7 +100,7 @@ class _SignupState extends State<Signup> {
                   });
                 },
               ),
-              MedBottomButton(
+              TezdaElevatedButton(
                 text: "Sign up",
                 onPressed: () {
                   final createUserReqBody = CreateUserRequestBody(

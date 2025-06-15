@@ -6,6 +6,8 @@ import '../../../../data/models/response/product/fetch_products_response.dart';
 import '../widget/product_widgets.dart';
 
 
+/// the product details screen
+
 class ProductDetailScreen extends StatelessWidget {
 
   static const id = 'products_details_screen';
@@ -59,22 +61,22 @@ class ProductDetailScreen extends StatelessWidget {
             SizedBox(height: 20.h,),
 
             // Title
-            giftVerificationContainer(
+            productDetailContainer(
               widget: Column(
                 children: [
-                  giftVerificationItem(
+                  productDetailItem(
                     key: 'Item:',
                     value: product.title,
                   ),
-                  giftVerificationItem(
+                  productDetailItem(
                     key: 'Amount',
                     value: '\$${product.price}',
                   ),
-                  giftVerificationItem(
+                  productDetailItem(
                     key: 'Category',
                     value: product.category.slug,
                   ),
-                  giftVerificationItem(
+                  productDetailItem(
                     key: 'Description',
                     value: product.description,
                   ),

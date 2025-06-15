@@ -8,7 +8,6 @@ import 'package:provider/provider.dart';
 
 import '../../../core/service/device_info.dart';
 import '../../provider/auth_provider.dart';
-import '../../provider/products_provider.dart';
 import '../auth_widgets.dart';
 import '../widgets/elevated_bottom_button.dart';
 import '../widgets/text_input.dart';
@@ -45,9 +44,9 @@ class _ProfilePageState extends State<ProfilePage> {
   }
   Map<String, String>? deviceInfo;
 
-   TextEditingController _nameController = TextEditingController(text: '');
+   final TextEditingController _nameController = TextEditingController(text: '');
 
-   TextEditingController _emailController =
+   final TextEditingController _emailController =
   TextEditingController(text: '');
 
   @override
@@ -86,7 +85,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           bottomPadding: 0,
                         ),
                         const Divider(height: 50, color: Colors.transparent),
-                        MedBottomButton(
+                        TezdaElevatedButton(
                           text: "Edit Profile",
                           onPressed: () {
                             final updateUserRequestBody = UpdateUserRequestBody(

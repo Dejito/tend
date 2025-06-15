@@ -150,7 +150,7 @@ Widget profileAvatar(String imageUrl) {
             right: 0,
             child: InkWell(
               onTap: (){
-                showToast(message: "Backend provider doesn't have such feature");
+                showToast(message: "Backend provider doesn't have update image feature");
               },
               child: Container(
                 decoration: AppDecorationStyle.boxDecoration,

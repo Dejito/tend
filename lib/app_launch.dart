@@ -17,7 +17,6 @@ class AppLaunch {
 
   Future<void> registerServices(ioc) async {
     setupAuthToken(ioc);
-    // setupSharedServices(ioc);
   }
 
 }
