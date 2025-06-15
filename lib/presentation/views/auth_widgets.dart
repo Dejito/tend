@@ -9,40 +9,6 @@ import '../../core/constants/app_colors.dart';
 import '../../core/constants/decoration_styles.dart';
 
 
-Container keepMeLoggedInForgotPassword(
-    {required bool value, required Function(bool?) onClickedChanged}) {
-  return Container(
-    decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Row(
-          children: [
-            Checkbox(
-              checkColor: AppColors.white,
-              activeColor: AppColors.primaryColor,
-              value: value,
-              onChanged: onClickedChanged,
-            ),
-            titleText("Keep me logged in",
-              fontSize: 11,
-              // fontStyle: FontStyle.italic,
-              textAlign: TextAlign.start,
-              fontWeight: FontWeight.w300,
-            ),
-          ],
-        ),
-        titleText(
-          "Forgot Password?",
-          fontSize: 14,
-          // fontStyle: FontStyle.italic,
-          textAlign: TextAlign.start,
-          fontWeight: FontWeight.w300,
-        ),
-      ],
-    ),
-  );
-}
 
 Widget newHereButton(Function() onClickedSignup) {
   return Container(
@@ -149,55 +115,7 @@ Widget termsAndConditionsText({
   );
 }
 
-Widget otpResendTime(String timerText) {
-  return Row(
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: [
-      titleText(
-        "TIME REMAINING  ",
-        textAlign: TextAlign.center,
-        fontWeight: FontWeight.w500,
-        bottomPadding: 15,
-      ),
-      titleText(
-        timerText,
-        textAlign: TextAlign.center,
-        color: AppColors.primaryColor,
-        fontWeight: FontWeight.w500,
-        bottomPadding: 15,
-      ),
-    ],
-  );
-}
 
-Widget didNotReceiveOTP(Function() onResendOTP) {
-  return Container(
-    margin: EdgeInsets.only(top: 12.h),
-    decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      textBaseline: TextBaseline.alphabetic,
-      children: [
-        titleText(
-            "Didn't receive OTP? ",
-            fontSize: 15,
-            textAlign: TextAlign.start,
-            fontWeight: FontWeight.w300,
-            color: Colors.grey.shade700),
-        GestureDetector(
-          onTap: onResendOTP,
-          child: titleText(
-              "Resend to phone",
-              fontSize: 15,
-              textAlign: TextAlign.start,
-              fontWeight: FontWeight.bold,
-              color: AppColors.primaryColor),
-        ),
-      ],
-    ),
-  );
-}
 
 Widget profileAvatar() {
   return Container(
