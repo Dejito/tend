@@ -1,4 +1,5 @@
 import 'package:blackchinx/presentation/views/widgets/titleText.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -9,40 +10,6 @@ import '../../core/constants/app_colors.dart';
 import '../../core/constants/decoration_styles.dart';
 
 
-Container keepMeLoggedInForgotPassword(
-    {required bool value, required Function(bool?) onClickedChanged}) {
-  return Container(
-    decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Row(
-          children: [
-            Checkbox(
-              checkColor: AppColors.white,
-              activeColor: AppColors.primaryColor,
-              value: value,
-              onChanged: onClickedChanged,
-            ),
-            titleText("Keep me logged in",
-              fontSize: 11,
-              // fontStyle: FontStyle.italic,
-              textAlign: TextAlign.start,
-              fontWeight: FontWeight.w300,
-            ),
-          ],
-        ),
-        titleText(
-          "Forgot Password?",
-          fontSize: 14,
-          // fontStyle: FontStyle.italic,
-          textAlign: TextAlign.start,
-          fontWeight: FontWeight.w300,
-        ),
-      ],
-    ),
-  );
-}
 
 Widget newHereButton(Function() onClickedSignup) {
   return Container(
@@ -149,57 +116,9 @@ Widget termsAndConditionsText({
   );
 }
 
-Widget otpResendTime(String timerText) {
-  return Row(
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: [
-      titleText(
-        "TIME REMAINING  ",
-        textAlign: TextAlign.center,
-        fontWeight: FontWeight.w500,
-        bottomPadding: 15,
-      ),
-      titleText(
-        timerText,
-        textAlign: TextAlign.center,
-        color: AppColors.primaryColor,
-        fontWeight: FontWeight.w500,
-        bottomPadding: 15,
-      ),
-    ],
-  );
-}
 
-Widget didNotReceiveOTP(Function() onResendOTP) {
-  return Container(
-    margin: EdgeInsets.only(top: 12.h),
-    decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      textBaseline: TextBaseline.alphabetic,
-      children: [
-        titleText(
-            "Didn't receive OTP? ",
-            fontSize: 15,
-            textAlign: TextAlign.start,
-            fontWeight: FontWeight.w300,
-            color: Colors.grey.shade700),
-        GestureDetector(
-          onTap: onResendOTP,
-          child: titleText(
-              "Resend to phone",
-              fontSize: 15,
-              textAlign: TextAlign.start,
-              fontWeight: FontWeight.bold,
-              color: AppColors.primaryColor),
-        ),
-      ],
-    ),
-  );
-}
 
-Widget profileAvatar() {
+Widget profileAvatar(String imageUrl) {
   return Container(
     margin: EdgeInsets.symmetric(vertical: 16.h),
     child: Center(
@@ -208,10 +127,22 @@ Widget profileAvatar() {
         children: [
           // Circular profile image
           CircleAvatar(
-            radius: 40.w,
+            radius: 80.w,
             backgroundColor: Colors.white,
-            backgroundImage: const AssetImage(AppImages.brandLogo),
+            child: ClipOval(
+              child: CachedNetworkImage(
+                imageUrl: imageUrl,
+                fit: BoxFit.cover,
+                width: double.infinity,
+                height: double.infinity,
+                placeholder: (context, url) =>
+                const Center(child: CircularProgressIndicator()),
+                errorWidget: (context, url, error) =>
+                const Icon(Icons.broken_image),
+              ),
+            ),
           ),
+
           // Camera icon overlay
           Positioned(
             bottom: 0,

@@ -3,8 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 Widget titleText(
-    String text,
-    {
+    String text, {
       Color color = Colors.black,
       double fontSize = 14,
       double topPadding = 0.0,
@@ -13,27 +12,31 @@ Widget titleText(
       double endPadding = 0.0,
       FontWeight fontWeight = FontWeight.w400,
       TextAlign textAlign = TextAlign.justify,
-      FontStyle fontStyle = FontStyle.normal
+      FontStyle fontStyle = FontStyle.normal,
+      TextOverflow overflow = TextOverflow.fade,
+      int? maxLines,
     }) {
-  //Todo: Fix/set restricted width for title text such that overflow is enforced esp in listview items/server data that the length ,ay not be pre-determined
   return Padding(
-      padding: EdgeInsets.only(
-        top: topPadding.h,
-        bottom: bottomPadding.h,
-        left: startPadding.w,
-        right: endPadding.w,
-      ),
+    padding: EdgeInsets.only(
+      top: topPadding.h,
+      bottom: bottomPadding.h,
+      left: startPadding.w,
+      right: endPadding.w,
+    ),
     child: Text(
       text,
       style: GoogleFonts.poppins(
         fontSize: fontSize.sp,
         fontWeight: fontWeight,
         color: color,
-        fontStyle: fontStyle
+        fontStyle: fontStyle,
       ),
       textAlign: textAlign,
-      overflow: TextOverflow.fade,
-      maxLines: 2,
+      overflow: overflow,
+      maxLines: maxLines,
+      softWrap: true,
     ),
   );
 }
+
+

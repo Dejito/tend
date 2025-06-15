@@ -19,6 +19,18 @@ class ProductsOverviewScreen extends StatefulWidget {
 
 class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
 
+  @override
+  void initState() {
+    try{
+      Future.delayed(const Duration(seconds: 1)).then((_)  {
+        return  Provider.of<AuthProvider>(context, listen: false).getUser();
+      } );
+    } catch (e){
+      debugPrint(e.toString());
+    }
+    super.initState();
+  }
+
 
   bool showFavs = false;
 

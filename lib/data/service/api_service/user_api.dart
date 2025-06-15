@@ -1,4 +1,5 @@
 import 'package:blackchinx/data/models/request/auth/login_reqbody.dart';
+import 'package:blackchinx/data/models/request/auth/update_user_req_body.dart';
 import 'package:blackchinx/data/service/http_util.dart';
 import 'package:dio/dio.dart';
 
@@ -22,8 +23,19 @@ class ApiService {
     return response;
   }
 
+  static Future<Response> getUser() async {
+    var response = await HttpUtil().get(AppUrl.getUser);
+    return response;
+  }
+
   static Future<Response> fetchProducts() async {
     var response = await HttpUtil().get(AppUrl.fetchProduct);
+    return response;
+  }
+
+  static Future<Response> updateUser(UpdateUserRequestBody updateUserRequestBody) async {
+    var response = await HttpUtil().put(AppUrl.updateUser,
+    data: updateUserRequestBody.toJson());
     return response;
   }
 
