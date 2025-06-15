@@ -1,4 +1,7 @@
+import 'package:blackchinx/presentation/views/profile/profile_page.dart';
 import 'package:flutter/material.dart';
+
+import '../screens/product_overview_screen.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({Key? key}) : super(key: key);
@@ -16,14 +19,14 @@ class AppDrawer extends StatelessWidget {
             leading: const Icon(Icons.shop),
             title: const Text('Shop'),
             onTap: (){
-              // Navigator.of(context).pushReplacementNamed(ProductsOverviewScreen.id);
+              Navigator.of(context).pushReplacementNamed(ProductsOverviewScreen.id);
             },
           ),
           ListTile(
-            leading: const Icon(Icons.edit),
-            title: const Text('Manage Products'),
+            leading: const Icon(Icons.person),
+            title: const Text('Profile'),
             onTap: (){
-              // Navigator.of(context).pushReplacementNamed(UserProductsScreen.id);
+              Navigator.of(context).pushReplacementNamed(ProfilePage.route);
             },
           )
         ],

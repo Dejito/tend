@@ -41,10 +41,9 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
             useMaterial3: true,
           ),
-          home:  ProfilePage(),
+          home:  const LoginScreen(),
           builder: EasyLoading.init(),
           routes: {
-            // ProductsOverviewScreen.id: (context) => const ProductsOverviewScreen(),
             LoginScreen.route: (context) => const LoginScreen(),
             Signup.route: (context) => const Signup(),
             ProductsOverviewScreen.id: (context) => const ProductsOverviewScreen(),
