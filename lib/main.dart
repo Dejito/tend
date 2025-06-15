@@ -46,15 +46,8 @@ class MyApp extends StatelessWidget {
             Signup.route: (context) => const Signup(),
             ProductsOverviewScreen.id: (context) => const ProductsOverviewScreen(),
             ProductDetailScreen.id: (context) => const ProductDetailScreen(),
-            ProfilePage.route: (context) => ProfilePage(),
-            // EditProfilePage.route: (context) => EditProfilePage(),
-
-            // UserProductsScreen.id: (context) => const UserProductsScreen(),
-            // EditProductScreen.id: (context) => const EditProductScreen(),
-            // AuthScreen.id: (context) => const AuthScreen(),
+            ProfilePage.route: (context) => const ProfilePage(),
           },
-          // initialRoute: AppRoutes.initial,
-          // onGenerateRoute: routes,
         ),
       ),
     );

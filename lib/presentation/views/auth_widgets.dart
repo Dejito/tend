@@ -23,7 +23,7 @@ Widget newHereButton(Function() onClickedSignup) {
       children: [
         titleText(
           "You're new here? ",
-          fontSize: 14,
+          fontSize: 12,
           textAlign: TextAlign.start,
           fontWeight: FontWeight.w300,
         ),
@@ -31,7 +31,7 @@ Widget newHereButton(Function() onClickedSignup) {
           onTap: onClickedSignup,
           child: titleText(
             "Sign Up",
-            // fontSize: 10,
+            fontSize: 12,
             textAlign: TextAlign.start,
             fontWeight: FontWeight.bold,
           ),

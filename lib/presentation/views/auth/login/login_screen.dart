@@ -43,8 +43,6 @@ class _LoginScreenState extends State<LoginScreen> {
           padding: const EdgeInsets.all(16.0),
           child: SingleChildScrollView(
             child: Column(
-              // crossAxisAlignment: CrossAxisAlignment.center,
-              // mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const SizedBox(
                   height: 40,
@@ -56,7 +54,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     topPadding: 12,
                     bottomPadding: 12),
                 titleText(
-                  "Log In now to access diverse\nranges of product offerings",
+                  "Log in now to access our \ndiverse product offerings",
                   fontSize: 14,
                   textAlign: TextAlign.center,
                   bottomPadding: 30,
@@ -96,7 +94,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 newHereButton(() {
                   Navigator.of(context).pushNamed(Signup.route);
-                  // context.go(AppRoutes.signup);
                 })
               ],
             ),
