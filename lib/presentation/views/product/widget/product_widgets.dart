@@ -24,14 +24,23 @@ Widget giftVerificationItem(
   return Container(
     margin: EdgeInsets.symmetric(vertical: 6.h),
     child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.start, // so wrapped text starts from top
       children: [
         titleText(
-           key, fontSize: 12, color: const Color(0xFF404040)),
-        titleText(
-          value,
-          fontWeight: FontWeight.w500,
-          fontSize: 14,
+          key,
+          fontSize: 12,
+          color: const Color(0xFF404040),
+        ),
+        const SizedBox(width: 8), // spacing between key and value
+        Expanded(
+          child: titleText(
+            value,
+            fontWeight: FontWeight.w500,
+            fontSize: 14,
+            textAlign: TextAlign.right,
+            overflow: TextOverflow.visible,
+            maxLines: null,
+          ),
         ),
       ],
     ),
