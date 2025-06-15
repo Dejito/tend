@@ -4,19 +4,41 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
+import '../../../core/service/device_info.dart';
 import '../../provider/auth_provider.dart';
 import '../auth_widgets.dart';
 import '../widgets/elevated_bottom_button.dart';
 import '../widgets/text_input.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
   static const route = '/profile-page';
 
   ProfilePage({super.key});
 
+  @override
+  State<ProfilePage> createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
+
+
+  @override
+  void initState() {
+    loadDeviceInfo();
+    super.initState();
+  }
+  Future<void> loadDeviceInfo() async {
+    final info = await DeviceInfoService.getDeviceInfo();
+    setState(() {
+      deviceInfo = info;
+    });
+  }
+  Map<String, String>? deviceInfo;
+
   final TextEditingController _nameController = TextEditingController(text: '');
+
   final TextEditingController _emailController =
-      TextEditingController(text: '');
+  TextEditingController(text: '');
 
   @override
   Widget build(BuildContext context) {
@@ -58,6 +80,16 @@ class ProfilePage extends StatelessWidget {
                   // context.go(AppRoutes.login);
                 },
               ),
+              if(deviceInfo != null)
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text("Device Name: ${deviceInfo!['name']}"),
+                    Text("Model: ${deviceInfo!['model']}"),
+                    Text("System: ${deviceInfo!['systemName']}"),
+                    Text("Version: ${deviceInfo!['systemVersion']}"),
+                  ],
+                ),
             ],
           ),
         ),
