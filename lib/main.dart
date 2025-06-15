@@ -5,8 +5,6 @@ import 'package:blackchinx/presentation/views/auth/login/login_screen.dart';
 import 'package:blackchinx/presentation/views/auth/sign_up/sign_up.dart';
 import 'package:blackchinx/presentation/views/product/screens/product_detail_screen.dart';
 import 'package:blackchinx/presentation/views/product/screens/product_overview_screen.dart';
-import 'package:blackchinx/presentation/views/product/widget/product_item.dart';
-import 'package:blackchinx/presentation/views/profile/edit_profile_page.dart';
 import 'package:blackchinx/presentation/views/profile/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -48,15 +46,8 @@ class MyApp extends StatelessWidget {
             Signup.route: (context) => const Signup(),
             ProductsOverviewScreen.id: (context) => const ProductsOverviewScreen(),
             ProductDetailScreen.id: (context) => const ProductDetailScreen(),
-            ProfilePage.route: (context) => ProfilePage(),
-            // EditProfilePage.route: (context) => EditProfilePage(),
-
-            // UserProductsScreen.id: (context) => const UserProductsScreen(),
-            // EditProductScreen.id: (context) => const EditProductScreen(),
-            // AuthScreen.id: (context) => const AuthScreen(),
+            ProfilePage.route: (context) => const ProfilePage(),
           },
-          // initialRoute: AppRoutes.initial,
-          // onGenerateRoute: routes,
         ),
       ),
     );

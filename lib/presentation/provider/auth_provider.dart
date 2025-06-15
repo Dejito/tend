@@ -17,8 +17,6 @@ import '../views/product/screens/product_overview_screen.dart';
 class AuthProvider with ChangeNotifier {
 
   bool isLoading = false;
-  // bool isUserCreated = false;
-
 
   late final CreateUserResponse createUserResponse;
   late final User user;
@@ -32,7 +30,6 @@ class AuthProvider with ChangeNotifier {
       if (response.statusCode == 200 || response.statusCode == 201) {
         createUserResponse = CreateUserResponse.fromJson(response.body);
         dismissLoadingIndicator();
-        // isUserCreated = true;
         showToast(message: "Congratulation!! \nUser created successfully!");
         if (ctx.mounted) {
           Navigator.of(ctx).pushReplacementNamed(LoginScreen.route);
@@ -56,7 +53,6 @@ class AuthProvider with ChangeNotifier {
         authToken = AuthToken.fromJson(response.body);
         getIt.registerSingleton<AuthToken>(authToken).accessToken;
         dismissLoadingIndicator();
-        // isLoginSuccessful = true;
         notifyListeners();
         if (context.mounted) {
         Navigator.of(context).pushReplacementNamed(ProductsOverviewScreen.id);
@@ -91,40 +87,19 @@ class AuthProvider with ChangeNotifier {
   }
 
   Future<void> getUser() async {
-    // showEaseLoadingIndicator();
     try {
       final response = await ApiService.getUser();
       if (response.statusCode == 200 || response.statusCode == 201) {
         user = User.fromJson(response.body);
-        // dismissLoadingIndicator();
         notifyListeners();
       } else {
         showToast(message: "Unexpected server response. Please try again.");
       }
     } catch (e) {
-      // dismissLoadingIndicator();
       handleError(error: e);
     }
 
   }
-
-
-  // void setLoginSuccessfulFlagToFalse() {
-  //   isLoginSuccessful = false;
-  //   notifyListeners();
-  // }
-
-
-  // void _showLoadingIndicator() {
-  //   isLoading = true;
-  //
-  //   notifyListeners();
-  // }
-  //
-  // void hideLoadingIndicator() {
-  //   isLoading = false;
-  //   notifyListeners();
-  // }
 
 }
 

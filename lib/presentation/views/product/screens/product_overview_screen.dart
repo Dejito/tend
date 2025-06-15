@@ -1,4 +1,3 @@
-import 'package:blackchinx/presentation/provider/auth_provider.dart';
 import 'package:blackchinx/presentation/provider/products_provider.dart';
 import 'package:blackchinx/presentation/views/product/widget/products_grid.dart';
 import 'package:flutter/material.dart';
@@ -19,47 +18,13 @@ class ProductsOverviewScreen extends StatefulWidget {
 
 class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
 
-  @override
-  void initState() {
-    try{
-      Future.delayed(const Duration(seconds: 1)).then((_)  {
-        return  Provider.of<AuthProvider>(context, listen: false).getUser();
-      } );
-    } catch (e){
-      debugPrint(e.toString());
-    }
-    super.initState();
-  }
-
-
-  bool showFavs = false;
-
+  /// this screen is the homepage after user logs in, also the product listing screen
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: const AppDrawer(),
       appBar: AppBar(
         title: const Text('Push'),
-        actions: [
-          PopupMenuButton(
-            onSelected: (selectedValue) {
-              setState(() {
-                showFavs = selectedValue == FilterOptions.favorites;
-              });
-            },
-            icon: const Icon(Icons.more_vert),
-            itemBuilder: (_) => const [
-              PopupMenuItem(
-                value: FilterOptions.favorites,
-                child: Text('Only Favorites'),
-              ),
-              PopupMenuItem(
-                value: FilterOptions.all,
-                child: Text('All'),
-              ),
-            ],
-          ),
-        ],
       ),
       body: FutureBuilder(
         future: Provider.of<ProductsProvider>(context, listen: false).fetchProducts(),
@@ -72,7 +37,7 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
                 await Provider.of<ProductsProvider>(context, listen: false).fetchProducts();
                 setState(() {});
               },
-              child: ProductsGrid(isFav: showFavs),
+              child: const ProductsGrid(),
             );
           }
         },

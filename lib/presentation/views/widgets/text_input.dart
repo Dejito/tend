@@ -170,9 +170,6 @@ class InputTextState extends State<InputText> {
 
   TextStyle? labelStyle(context) {
     return labelTextFieldTextStyle(context);
-    // _focusNode.hasFocus
-    //     ? labelTextFieldTextStyle(context)
-    //     : textFieldPlaceholderTextStyle(context);
   }
 
   labelTextFieldTextStyle(context) => GoogleFonts.roboto(

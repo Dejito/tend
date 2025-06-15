@@ -1,3 +1,4 @@
+import 'package:blackchinx/presentation/views/widgets/flutter_toast.dart';
 import 'package:blackchinx/presentation/views/widgets/titleText.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/gestures.dart';
@@ -22,7 +23,7 @@ Widget newHereButton(Function() onClickedSignup) {
       children: [
         titleText(
           "You're new here? ",
-          fontSize: 14,
+          fontSize: 12,
           textAlign: TextAlign.start,
           fontWeight: FontWeight.w300,
         ),
@@ -30,7 +31,7 @@ Widget newHereButton(Function() onClickedSignup) {
           onTap: onClickedSignup,
           child: titleText(
             "Sign Up",
-            // fontSize: 10,
+            fontSize: 12,
             textAlign: TextAlign.start,
             fontWeight: FontWeight.bold,
           ),
@@ -42,7 +43,7 @@ Widget newHereButton(Function() onClickedSignup) {
 
 Widget alreadyHaveAnAccountButton(Function() onClickedSignup) {
   return Container(
-    margin: EdgeInsets.only(top: 12.h),
+    margin: EdgeInsets.only(top: 24.h),
     decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -51,7 +52,7 @@ Widget alreadyHaveAnAccountButton(Function() onClickedSignup) {
       children: [
         titleText(
           "Already have an account? ",
-          fontSize: 14,
+          fontSize: 12,
           textAlign: TextAlign.start,
           fontWeight: FontWeight.w300,
         ),
@@ -59,7 +60,7 @@ Widget alreadyHaveAnAccountButton(Function() onClickedSignup) {
           onTap: onClickedSignup,
           child: titleText(
             "Sign In",
-            // fontSize: 10,
+            fontSize: 12,
             textAlign: TextAlign.start,
             fontWeight: FontWeight.bold,
           ),
@@ -147,13 +148,18 @@ Widget profileAvatar(String imageUrl) {
           Positioned(
             bottom: 0,
             right: 0,
-            child: Container(
-              decoration: AppDecorationStyle.boxDecoration,
-              padding: const EdgeInsets.all(6),
-              child: Icon(
-                Icons.camera_alt,
-                size: 15.w,
-                color: Colors.grey[800],
+            child: InkWell(
+              onTap: (){
+                showToast(message: "Backend provider doesn't have update image feature");
+              },
+              child: Container(
+                decoration: AppDecorationStyle.boxDecoration,
+                padding: const EdgeInsets.all(6),
+                child: Icon(
+                  Icons.camera_alt,
+                  size: 15.w,
+                  color: Colors.grey[800],
+                ),
               ),
             ),
           ),

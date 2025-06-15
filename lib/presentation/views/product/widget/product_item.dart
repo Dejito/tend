@@ -9,6 +9,8 @@ import 'package:provider/provider.dart';
 class ProductItem extends StatelessWidget {
   final Product product;
 
+  ///UI template for how products are rendered in the gridview
+
   const ProductItem({super.key, required this.product});
 
   @override

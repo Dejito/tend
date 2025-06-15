@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/constants/decoration_styles.dart';
 import '../../widgets/titleText.dart';
 
-Container giftVerificationContainer({required Widget widget}) {
+Container productDetailContainer({required Widget widget}) {
   return Container(
     padding: EdgeInsets.all(16.w),
     decoration: AppDecorationStyle.boxDecoration,
@@ -17,7 +17,7 @@ Container giftVerificationContainer({required Widget widget}) {
   );
 }
 
-Widget giftVerificationItem(
+Widget productDetailItem(
     {required String key,
       required String value,
     }) {
@@ -36,7 +36,7 @@ Widget giftVerificationItem(
           child: titleText(
             value,
             fontWeight: FontWeight.w500,
-            fontSize: 14,
+            fontSize: 12,
             textAlign: TextAlign.right,
             overflow: TextOverflow.visible,
             maxLines: null,

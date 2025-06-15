@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../../core/constants/app_colors.dart';
 
-class MedBottomButton extends StatelessWidget {
+class TezdaElevatedButton extends StatelessWidget {
 
   final VoidCallback? onPressed;
   final String text;
@@ -16,7 +16,7 @@ class MedBottomButton extends StatelessWidget {
   final double? bottomMargin;
   final bool isLoading;
 
-  const MedBottomButton({
+  const TezdaElevatedButton({
     super.key,
     this.onPressed,
     required this.text,

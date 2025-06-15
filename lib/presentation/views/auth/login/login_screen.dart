@@ -1,14 +1,11 @@
 import 'package:blackchinx/data/models/request/auth/login_reqbody.dart';
 import 'package:blackchinx/presentation/provider/auth_provider.dart';
-import 'package:blackchinx/presentation/views/product/screens/product_overview_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../auth_widgets.dart';
 import '../../widgets/elevated_bottom_button.dart';
-import '../../auth_widgets.dart';
 import '../sign_up/sign_up.dart';
-import '../../widgets/elevated_bottom_button.dart';
 import '../../widgets/text_input.dart';
 import '../../widgets/titleText.dart';
 
@@ -22,7 +19,20 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  bool isCheckedKeepLoggedIn = false;
+
+  @override
+  void dispose() {
+    _passwordController.dispose();
+    _emailController.dispose();
+    super.dispose();
+  }
+
+  final TextEditingController _passwordController = TextEditingController();
+
+  final TextEditingController _emailController = TextEditingController();
+
+  bool _obscurePassword = true;
+
 
   @override
   Widget build(BuildContext context) {
@@ -33,8 +43,6 @@ class _LoginScreenState extends State<LoginScreen> {
           padding: const EdgeInsets.all(16.0),
           child: SingleChildScrollView(
             child: Column(
-              // crossAxisAlignment: CrossAxisAlignment.center,
-              // mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const SizedBox(
                   height: 40,
@@ -46,25 +54,39 @@ class _LoginScreenState extends State<LoginScreen> {
                     topPadding: 12,
                     bottomPadding: 12),
                 titleText(
-                  "Log In now to access diverse\nranges of product offerings",
-                  fontSize: 16,
+                  "Log in now to access our \ndiverse product offerings",
+                  fontSize: 14,
                   textAlign: TextAlign.center,
                   bottomPadding: 30,
                 ),
                 InputText(
+                  controller: _emailController,
                   hint: "Email",
                   bottomPadding: 0,
                 ),
                 InputText(
-                  hint: "Password",
-                  bottomPadding: 16,
-                  suffixIcon: const Icon(Icons.visibility_off_outlined),
-                ),
-                MedBottomButton(
+                  controller: _passwordController,
+                  obscureText: _obscurePassword,
+                    hint: "Password",
+                    keyboardType: TextInputType.visiblePassword,                  bottomPadding: 16,
+                    suffixIcon: IconButton(
+                      onPressed: () {
+                        setState(() {
+                          _obscurePassword = !_obscurePassword;
+                        });
+                      },
+                      icon: const Icon(
+                        Icons.visibility_off_outlined,
+                        color: Colors.grey,
+                      ),
+                    )                ),
+                TezdaElevatedButton(
                   text: "Log in",
                   onPressed: () {
                     final loginReqBody = LoginRequestBody(
-                        email: 'Deerealboy@gmail.com', password: '1111');
+                      email: _emailController.text,
+                      password: _passwordController.text,
+                    );
                     authProvider.login(loginReqBody, context);
                   },
                   topMargin: 30,
@@ -72,7 +94,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 newHereButton(() {
                   Navigator.of(context).pushNamed(Signup.route);
-                  // context.go(AppRoutes.signup);
                 })
               ],
             ),
