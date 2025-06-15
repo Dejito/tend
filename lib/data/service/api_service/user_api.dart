@@ -23,6 +23,11 @@ class ApiService {
     return response;
   }
 
+  static Future<Response> getUser() async {
+    var response = await HttpUtil().get(AppUrl.getUser);
+    return response;
+  }
+
   static Future<Response> fetchProducts() async {
     var response = await HttpUtil().get(AppUrl.fetchProduct);
     return response;

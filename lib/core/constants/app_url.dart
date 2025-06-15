@@ -6,6 +6,7 @@ class AppUrl {
   static const login = 'auth/login';
   static const fetchProduct = 'products';
   static const updateUser = 'users/1';
+  static const getUser = 'auth/profile';
 
 
 }

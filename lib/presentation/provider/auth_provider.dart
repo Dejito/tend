@@ -2,6 +2,7 @@ import 'package:blackchinx/data/models/request/auth/create_user_req.dart';
 import 'package:blackchinx/data/models/request/auth/login_reqbody.dart';
 import 'package:blackchinx/data/models/request/auth/update_user_req_body.dart';
 import 'package:blackchinx/data/models/response/auth/create_user_response.dart';
+import 'package:blackchinx/data/models/response/auth/get_user_response.dart';
 import 'package:blackchinx/data/models/response/auth/login_response.dart';
 import 'package:blackchinx/data/service/api_service/user_api.dart';
 import 'package:blackchinx/data/service/http_util.dart';
@@ -19,6 +20,7 @@ class AuthProvider with ChangeNotifier {
 
 
   late final CreateUserResponse createUserResponse;
+  late final User user;
   late final AuthToken authToken;
 
 
@@ -79,6 +81,24 @@ class AuthProvider with ChangeNotifier {
       }
     } catch (e) {
       dismissLoadingIndicator();
+      handleError(error: e);
+    }
+
+  }
+
+  Future<void> getUser() async {
+    // showEaseLoadingIndicator();
+    try {
+      final response = await ApiService.getUser();
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        user = User.fromJson(response.body);
+        // dismissLoadingIndicator();
+        notifyListeners();
+      } else {
+        showToast(message: "Unexpected server response. Please try again.");
+      }
+    } catch (e) {
+      // dismissLoadingIndicator();
       handleError(error: e);
     }
 
